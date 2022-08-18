@@ -1,0 +1,129 @@
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <h2>Add form</h2>
+      <p class="lead">You can add new product here</p>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-md-12 col-lg-12">
+        <h4 class="mb-3">Add Product</h4>
+        <form class="formGroup" [formGroup]="AddForm" id="AddForm">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">title</label>
+              <input
+                type="text"
+                formControlName="title"
+                required
+                class="form-control"
+                id="firstName"
+              />
+              <div
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="f['title'].touched && f['title'].invalid"
+              >
+                <div *ngIf="f['title'].errors && f['title'].errors['required']">
+                  required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">price</label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="price"
+                id="price"
+                required
+              />
+              <div
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="f['price'].touched && f['price'].invalid"
+              >
+                <div *ngIf="f['price'].errors && f['price'].errors['required']">
+                  required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">description</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="description"
+                id="description"
+                required
+              />
+              <div
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="f['description'].touched && f['description'].invalid"
+              >
+                <div
+                  *ngIf="
+                    f['description'].errors &&
+                    f['description'].errors['required']
+                  "
+                >
+                  required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <label for="category" class="form-label">category</label>
+              <select class="form-select" id="category" formControlName="category" required>
+                <option value="Choose" selected disabled>Choose...</option>
+                <option *ngFor="let item of ICategory" [value]="item">
+                  {{ item }}
+                </option>
+              </select>
+              <div
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="f['category'].touched && f['category'].invalid"
+              >
+                <div
+                  *ngIf="
+                    f['category'].errors && f['category'].errors['required']
+                  "
+                >
+                  required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <label for="image" class="form-label">Choose Image</label>
+              <div class="input-group mb-3">
+                <input
+                  type="file"
+                  formControlName="image"
+                  class="form-control"
+                  id="image"
+                />
+                <label class="input-group-text" for="image">Upload</label>
+              </div>
+            </div>
+          </div>
+
+          <button
+            (click)="AddProduct()"
+            type="submit"
+            [disabled]="!AddForm.valid"
+            class="w-50 text-center align-item-center btn btn-primary btn-lg mt-5"
+            type="submit"
+            style="margin: auto; display: flex; justify-content: center"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>

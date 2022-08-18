@@ -1,0 +1,54 @@
+<div class="alert alert-danger" *ngIf="ValidationText" role="alert">
+  {{ ValidationText }}
+</div>
+<form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+  <div class="form-group">
+    <input
+      type="text"
+      placeholder="user name is mor_2314"
+      formControlName="userName"
+      class="form-control"
+    />
+    <div
+      class="validation text-danger"
+      *ngIf="
+        loginForm.controls.userName.touched &&
+        loginForm.controls.userName.invalid
+      "
+    >
+      <p *ngIf="loginForm.controls.userName.errors.required">
+        user name = (mor_2314) field is required
+      </p>
+      <p *ngIf="loginForm.controls.userName.errors.minlength">
+        user name field lenght must be 8 characters
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="password"
+      placeholder="password is 83r5^_"
+      formControlName="password"
+      class="form-control"
+    />
+    <div
+      class="validation text-danger"
+      *ngIf="
+        loginForm.controls.password.touched &&
+        loginForm.controls.password.invalid
+      "
+    >
+      <p *ngIf="loginForm.controls.password.errors.required">
+        password (83r5^_) field is required
+      </p>
+      <p *ngIf="loginForm.controls.password.errors.minlength">
+        password field lenght must be 8 characters
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-block" [disabled]="!loginForm.valid" type="submit">
+      Login
+    </button>
+  </div>
+</form>

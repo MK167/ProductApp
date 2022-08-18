@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="container">
+      <a class="navbar-brand" [routerLink]="['/home']">E-Commerce app</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"  (click)="isMenuCollapsed = !isMenuCollapsed">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" [ngbCollapse]="isMenuCollapsed" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/home']"  routerLinkActive="active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/products']"  routerLinkActive="active">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/add-new-product']"  routerLinkActive="active">Add New Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()"  routerLinkActive="active">Sign-Out</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+</nav>
